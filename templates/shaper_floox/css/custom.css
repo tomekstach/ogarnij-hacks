@@ -1,3 +1,28 @@
 .sppb-row .articles-flipbox {
   padding: 10px;
 }
+
+#sp-top-bar {
+  display: none;
+}
+
+header#sp-header {
+  top: 20px;
+}
+
+.social-icons {
+  float: right!important;
+  margin-top: 10px!important;
+}
+
+.languages {
+  margin-top: 5px;
+}
+
+.menu-fixed .social-icons {
+  margin-top: 20px!important;
+}
+
+.menu-fixed .languages {
+  margin-top: 10px;
+}
