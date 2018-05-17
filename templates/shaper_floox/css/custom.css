@@ -26,3 +26,55 @@ header#sp-header {
 .menu-fixed .languages {
   margin-top: 10px;
 }
+
+.sppb-row .articles-flipbox {
+  padding: 10px;
+}
+
+.sppb-addon.sppb-addon-sppb-flibox.slide-flipbox {
+  padding: 0;
+}
+
+.sppb-row .articles-flipbox .sppb-flipbox-panel .sppb-flipbox-front .flip-box-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.sppb-row .articles-flipbox .sppb-flipbox-front .flip-box-inner h3 {
+  color: #fff;
+}
+
+.sppb-flipbox-panel {
+  background: transparent;
+  -webkit-transition: all .6s ease-in-out;
+  -moz-transition: all .6s ease-in-out;
+  -ms-transition: all .6s ease-in-out;
+  -o-transition: all .6s ease-in-out;
+  transition: all .6s ease-in-out;
+}
+
+.sppb-row .articles-flipbox .sppb-flipbox-back .flip-box-inner .btn {
+  margin-top: 40%;
+}
+
+.sppb-row .articles-flipbox .sppb-flipbox-panel.flip {
+  background: rgba(0, 0, 0, 1);
+}
+
+.sppb-row .articles-flipbox .sppb-flipbox-panel.flip .sppb-flipbox-front .flip-box-inner {
+  bottom: 50%;
+}
+
+.sspb-articles-bottom {
+  text-align: center;
+  margin-top: 50px;
+}

@@ -69,7 +69,7 @@ class SppagebuilderAddonArticles extends SppagebuilderAddons {
                   $output .= '<div class="sppb-column-addons">';
                   $output .= '<div class="clearfix">';
 
-                  $output .= '<div class="sppb-addon sppb-addon-sppb-flibox slide-flipbox flip_top flipon-hover sppb-text-center '.$class.'" style="background-image: url(' . $item->image_thumbnail . ');">';
+                  $output .= '<div class="sppb-addon sppb-addon-sppb-flibox slide-flipbox flip_bottom flipon-hover sppb-text-center '.$class.'" style="background-image: url(' . $item->image_thumbnail . ');">';
 
                   $output .= '<div class="sppb-flipbox-panel">';
                   $output .= '<div class="sppb-flipbox-front flip-box">';
@@ -139,7 +139,7 @@ class SppagebuilderAddonArticles extends SppagebuilderAddons {
                   if ($resource == 'k2') {
                       $output .= '<a href="' . urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($catid . ':' . urlencode($catid)))) . '" " id="btn-' . $this->addon->id . '" class="sppb-btn' . $all_articles_btn_class . '">' . $all_articles_btn_text . '</a>';
                   } else {
-                      $output .= '<a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)) . '" id="btn-' . $this->addon->id . '" class="sppb-btn' . $all_articles_btn_class . '">' . $all_articles_btn_text . '</a>';
+                      $output .= '<div class="sppb-text-center sspb-articles-bottom"><a href="' . JRoute::_(ContentHelperRoute::getCategoryRoute($item->catslug)) . '" id="btn-' . $this->addon->id . '" class="sppb-btn' . $all_articles_btn_class . '">' . $all_articles_btn_text . '</a></div>';
                   }
               }
           }
