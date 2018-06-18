@@ -48,13 +48,17 @@ class Helix3FeatureTitle {
 					$style = 'style="' . $style . '"';
 				}
 
+				if (empty($page_subtitle)) {
+					$class = ' header-empty';
+				}
+
 				if($page_title_alt) {
 					$page_title 	 = $page_title_alt;
 				}
 
 				$output = '';
 
-				$output .= '<div class="sp-page-title"'. $style .'>';
+				$output .= '<div class="sp-page-title'.$class.'"'. $style .'>';
 				$output .= '<div class="container">';
 
 				$output .= '<jdoc:include type="modules" name="breadcrumb" style="none" />';
