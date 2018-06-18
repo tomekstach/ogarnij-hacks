@@ -79,7 +79,7 @@ class SppagebuilderAddonArticles extends SppagebuilderAddons {
                   $output .= '</div>'; //.flip-box-inner
 
                   $output .= '</div>'; //.sppb-flipbox-front.flip-box
-                  $output .= '<div class="sppb-flipbox-back flip-box">';
+                  $output .= '<a class="sppb-flipbox-back flip-box" href="' . $item->link . '" itemprop="url">';
                   $output .= '<div class="flip-box-inner">';
 
                   if ($show_category) {
@@ -111,11 +111,11 @@ class SppagebuilderAddonArticles extends SppagebuilderAddons {
                   }
 
                   if ($show_readmore) {
-                      $output .= '<a class="btn btn-default" href="' . $item->link . '" itemprop="url">' . $readmore_text . '</a>';
+                      $output .= '<span class="btn btn-default">' . $readmore_text . '</span>';
                   }
 
                   $output .= '</div>'; //.flip-box-inner
-                  $output .= '</div>'; //.sppb-flipbox-back.flip-box
+                  $output .= '</a>'; //.sppb-flipbox-back.flip-box
                   $output .= '</div>'; //.sppb-flipbox-panel
                   $output .= '</div>';
                   $output .= '</div>';

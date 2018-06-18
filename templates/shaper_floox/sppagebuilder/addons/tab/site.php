@@ -18,6 +18,7 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
 		$nav_icon_postion = (isset($this->addon->settings->nav_icon_postion) && $this->addon->settings->nav_icon_postion) ? $this->addon->settings->nav_icon_postion : '';
 		$heading_selector = (isset($this->addon->settings->heading_selector) && $this->addon->settings->heading_selector) ? $this->addon->settings->heading_selector : 'h3';
 		$nav_text_align = (isset($this->addon->settings->nav_text_align) && $this->addon->settings->nav_text_align) ? $this->addon->settings->nav_text_align : 'sppb-text-left';
+		$active_on = (isset($this->addon->settings->active_on) && $this->addon->settings->active_on) ? $this->addon->settings->active_on : 0;
 
 		//Output
 		$output  = '<div class="sppb-addon sppb-addon-tab ' . $class . '">';
@@ -42,8 +43,12 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
       }
       $title = (isset($tab->title) && $tab->title) ? ' '. $tab->title . ' ' : '';
 			// AstoSoft - start
-      //$output .='<li class="'. ( ($key==0) ? "active" : "").'">';
-			$output .='<li class="'. ( ($key==0) ? "" : "").'">';
+			if ($active_on == 1) {
+      	$output .='<li class="'. ( ($key==0) ? "active" : "").'">';
+			}
+			else {
+				$output .='<li class="'. ( ($key==0) ? "" : "").'">';
+			}
 			// AstoSoft - end
       $output .= '<a data-toggle="sppb-tab" class="'.$nav_text_align.'" href="#sppb-tab-'. ($this->addon->id + $key) .'">'. $icon_top . $icon_left . $title . $icon_right . $icon_bottom .'</a>';
       $output .='</li>';
@@ -54,8 +59,12 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
 		$output .='<div class="sppb-tab-content sppb-tab-' . $style . '-content">';
 		foreach ($this->addon->settings->sp_tab_item as $key => $tab) {
 			// AstoSoft - start
-      //$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade'. ( ($key==0) ? " active in" : "").'">' . $tab->content .'</div>';
-			$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade">' . $tab->content .'</div>';
+			if ($active_on == 1) {
+      	$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade'. ( ($key==0) ? " active in" : "").'">' . $tab->content .'</div>';
+			}
+			else {
+				$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade">' . $tab->content .'</div>';
+			}
 			// AstoSoft - end
 		}
 		$output .='</div>';

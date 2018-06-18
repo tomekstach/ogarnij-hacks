@@ -78,3 +78,11 @@ header#sp-header {
   text-align: center;
   margin-top: 50px;
 }
+
+.sppb-addon-gallery .sppb-gallery li a:after {
+  content: '\f00e';
+}
+
+.sppb-addon-tab.donate-tabs .sppb-tab .sppb-nav-tabs {
+  text-align: left;
+}
