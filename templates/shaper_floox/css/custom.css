@@ -86,3 +86,11 @@ header#sp-header {
 .sppb-addon-tab.donate-tabs .sppb-tab .sppb-nav-tabs {
   text-align: left;
 }
+
+.sp-page-title.header-empty {
+  padding: 90px 0 0 0;
+}
+
+.sp-page-title.header-empty .container {
+  display: none;
+}
