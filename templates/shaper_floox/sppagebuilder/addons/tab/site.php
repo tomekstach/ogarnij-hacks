@@ -49,9 +49,22 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
 			else {
 				$output .='<li class="'. ( ($key==0) ? "" : "").'">';
 			}
+
+			if ($style == 'modern') {
+      	$output .= '<a data-toggle="sppb-tab" class="'.$nav_text_align.'" href="#sppb-tab-'. ($this->addon->id + $key) .'">';
+				$title_split = explode('||', $title);
+				$output .= '<div class="sppb-addon sppb-addon-animated-number sppb-text-center "><div class="sppb-addon-content"><div class="sppb-animated-number" data-digit="'.trim($title_split[0]).'" data-duration="1000">'.trim($title_split[0]).'</div>';
+				if (!empty($title_split[1])) {
+					$output .= '<div class="sppb-animated-number-title">'.str_replace('\n', '<br/>', $title_split[1]).'</div>';
+				}
+				$output .= '</div></div>';
+				$output .= '</a>';
+			}
+			else {
+				$output .= '<a data-toggle="sppb-tab" class="'.$nav_text_align.'" href="#sppb-tab-'. ($this->addon->id + $key) .'">'. $icon_top . $icon_left . $title . $icon_right . $icon_bottom .'</a>';
+			}
 			// AstoSoft - end
-      $output .= '<a data-toggle="sppb-tab" class="'.$nav_text_align.'" href="#sppb-tab-'. ($this->addon->id + $key) .'">'. $icon_top . $icon_left . $title . $icon_right . $icon_bottom .'</a>';
-      $output .='</li>';
+			$output .='</li>';
 		}
 		$output .='</ul>';
 
