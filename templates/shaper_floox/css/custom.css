@@ -94,3 +94,26 @@ header#sp-header {
 .sp-page-title.header-empty .container {
   display: none;
 }
+
+.sppb-nav-modern>li.active>a,
+.sppb-nav-modern>li>a,
+.sppb-nav-modern>li>a:hover,
+.sppb-nav-modern>li.active>a:hover {
+  background: transparent;
+  border: none;
+}
+
+.sppb-nav-modern>li>a .sppb-addon.sppb-addon-animated-number {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.sppb-nav-modern .sppb-animated-number {
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.sppb-nav-modern .sppb-animated-number-title {
+  font-size: 18px;
+  line-height: 18px;
+}
