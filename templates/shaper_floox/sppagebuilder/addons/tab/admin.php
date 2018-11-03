@@ -170,8 +170,9 @@ SpAddonsConfig::addonConfig(
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_TITLE_DESC'),
                                 'std' => 'Tab'
                             ),
-                            'icon' => array(
-                                'type' => 'icon',
+                            // AstoSoft - start
+                            'image' => array(
+                                'type' => 'media',
                                 'title' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_ICON'),
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_ICON_DESC'),
                                 'std' => ''
@@ -182,8 +183,15 @@ SpAddonsConfig::addonConfig(
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_TEXT_DESC'),
                                 'std' => 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
                             ),
+                            'class' => array(
+                                'type' => 'text',
+                                'title' => JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
+                                'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
+                                'std' => ''
+                            ),
                         ),
                     ),
+                    // AstoSoft - end
                     'tab_separator'=>array(
                         'type'=>'separator',
                         'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TAB_SEPERATOR'),
