@@ -81,11 +81,17 @@ header#sp-header {
 
 #sp-header.menu-fixed {
   background: rgba(65,89,129,0.80);
+  background-image: url('../images/menu_background.jpg');
+  background-position: calc(50% - 570px) top;
+  background-repeat: no-repeat;
 }
 
 #sp-header.menu-fixed-out {
   background: rgba(65,89,129,0.80);
   top: 0;
+  background-image: url('../images/menu_background.jpg');
+  background-position: calc(50% - 570px) top;
+  background-repeat: no-repeat;
 }
 
 #sp-header .logo {
@@ -119,23 +125,41 @@ header#sp-header {
  padding: 0;
 }
 
+.sp-page-builder .page-content #section-id-1524940706875 .sppb-row-container {
+  width: 100% !important;
+}
+
+.sp-page-builder .page-content #section-id-1524940706875 .sppb-row-container .sppb-carousel-item-inner {
+  float: right;
+  width: 40%;
+  max-width: 450px;
+  position: inherit;
+  padding-top: 120px;
+}
+
+.sp-page-builder .page-content #section-id-1524940706875 .sppb-row-container .sppb-item > img {
+  display: block;
+  float: right;
+  width: 60%;
+}
+
 .sp-page-builder .page-content #section-id-1524940706875 {
- background-position: top center !important;
- background-size: auto 100% !important;
+ background-position: 15% 100% !important;
  background-attachment: inherit !important;
- padding-top: 120px !important;
- height: 739px !important;
 }
 
 .sp-page-builder .page-content #section-id-1524940706875 .sppb-row {
-  width: 350px;
   color: #fff;
   font-size: 15px;
 }
 
+.sp-page-builder .page-content #section-id-1524940706875 .sppb-row > div {
+  padding: 0;
+}
+
 .sppb-carousel-indicators {
-  bottom: -30px;
-  left: 0;
+  top: 400px;
+  left: 25%;
   margin-left: 0;
   width: auto;
 }
