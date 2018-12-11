@@ -318,16 +318,33 @@ SpAddonsConfig::addonConfig(
                         ),
                         'std' => 'left',
                     ),
+                    // AstoSoft - start
                     'active_on' => array(
                         'type' => 'checkbox',
                         'title' => 'Active ON',
-                        'desc' => 'If the first item should be set as an active',
+                        'desc' => 'If the one of the items should be set as an active',
                         'values' => array(
                             0 => 'No',
                             1 => 'Yes'
                         ),
                         'std' => 0,
                     ),
+                    'active_number' => array(
+                        'type' => 'select',
+                        'title' => 'Active number',
+                        'desc' => 'Which element should be active',
+                        'values' => array(
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '1',
+                        'depends' => array(array('active_on', '!=', '0')),
+                    ),
+                    // AstoSoft - end
                     'show_boxshadow' => array(
                         'type' => 'checkbox',
                         'title' => JText::_('COM_SPPAGEBUILDER_TAB_BOXSHADOW_SHOW'),

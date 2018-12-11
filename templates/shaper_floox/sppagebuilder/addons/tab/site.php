@@ -18,7 +18,10 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
 		$nav_icon_postion = (isset($this->addon->settings->nav_icon_postion) && $this->addon->settings->nav_icon_postion) ? $this->addon->settings->nav_icon_postion : '';
 		$heading_selector = (isset($this->addon->settings->heading_selector) && $this->addon->settings->heading_selector) ? $this->addon->settings->heading_selector : 'h3';
 		$nav_text_align = (isset($this->addon->settings->nav_text_align) && $this->addon->settings->nav_text_align) ? $this->addon->settings->nav_text_align : 'sppb-text-left';
+		// AstoSoft - start
 		$active_on = (isset($this->addon->settings->active_on) && $this->addon->settings->active_on) ? $this->addon->settings->active_on : 0;
+		$active_number = (isset($this->addon->settings->active_number) && $this->addon->settings->active_number) ? intval($this->addon->settings->active_number)-1 : 0;
+		// AstoSoft - end
 
 		//Output
 		$output  = '<div class="sppb-addon sppb-addon-tab ' . $class . '">';
@@ -44,10 +47,10 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
       $title = (isset($tab->title) && $tab->title) ? ' '. $tab->title . ' ' : '';
 			// AstoSoft - start
 			if ($active_on == 1) {
-      	$output .='<li class="'. ( ($key==0) ? "active" : "").'">';
+      	$output .='<li class="'. ( ($key==$active_number) ? "active" : "").'">';
 			}
 			else {
-				$output .='<li class="'. ( ($key==0) ? "" : "").'">';
+				$output .='<li class="">';
 			}
 
 			if ($style == 'modern') {
@@ -79,7 +82,7 @@ class SppagebuilderAddonTab extends SppagebuilderAddons {
 		foreach ($this->addon->settings->sp_tab_item as $key => $tab) {
 			// AstoSoft - start
 			if ($active_on == 1) {
-      	$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade'. ( ($key==0) ? " active in" : "").'">' . $tab->content .'</div>';
+      	$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade'. ( ($key==$active_number) ? " active in" : "").'">' . $tab->content .'</div>';
 			}
 			else {
 				$output .='<div id="sppb-tab-'. ($this->addon->id + $key) .'" class="sppb-tab-pane sppb-fade">' . $tab->content .'</div>';

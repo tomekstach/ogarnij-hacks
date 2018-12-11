@@ -53,30 +53,26 @@ if($this->print) $has_post_format = false;
 
 ?>
 <article class="item item-page<?php echo $this->pageclass_sfx . ($this->item->featured) ? ' item-featured' : ''; ?>" itemscope itemtype="http://schema.org/Article">
-	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
-	<?php if ($this->params->get('show_page_heading', 1)) : ?>
-	<div class="page-header">
-		<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
-	</div>
-	<?php endif;
 
-	if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative) {
-		echo $this->item->pagination;
-	}
-?>
+	<div class="col-sm-12 col-md-8">
 
-	<?php
-		if($post_format=='standard') {
-			echo JLayoutHelper::render('joomla.content.full_image', $this->item);
-		} else {
-			echo JLayoutHelper::render('joomla.content.post_formats.post_' . $post_format, array('params' => $params, 'item' => $this->item));
+		<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+		<?php if ($this->params->get('show_page_heading', 1)) : ?>
+		<div class="page-header">
+			<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+		</div>
+		<?php endif;
+
+		if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative) {
+			echo $this->item->pagination;
 		}
 	?>
 	<div class="row article-details-wrap">
 		<div class="entry-header-wrap text-center">
-			<?php if ($params->get('show_category')) { ?>
-				<?php echo JLayoutHelper::render('joomla.content.info_block.category', array('item' => $this->item, 'params' => $params)); ?>
-			<?php } ?>
+
+			<?php if (!$this->print && $useDefList && ($info == 0 || $info == 2)) : ?>
+				<?php echo JLayoutHelper::render('joomla.content.info_block.block2', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
+			<?php endif; ?>
 
 			<div class="entry-header<?php echo $has_post_format ? ' has-post-format': ''; ?>">
 				<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
@@ -98,14 +94,8 @@ if($this->print) $has_post_format = false;
 
 				<?php echo JLayoutHelper::render('joomla.content.post_formats.icons',  $post_format); ?>
 
-				<?php if (!$this->print && $useDefList && ($info == 0 || $info == 2)) : ?>
-					<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
-				<?php endif; ?>
-
 			</div> <!-- //.entry-header -->
 		</div> <!-- //.entry-header-wrap -->
-
-		<div class="col-sm-12">
 
 			<?php if (!$this->print) : ?>
 				<?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
@@ -119,7 +109,6 @@ if($this->print) $has_post_format = false;
 				<?php endif; ?>
 			<?php endif; ?>
 
-			<?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
 			<?php echo $this->item->event->beforeDisplayContent; ?>
 
 			<?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '0')) || ($params->get('urls_position') == '0' && empty($urls->urls_position)))
@@ -130,11 +119,6 @@ if($this->print) $has_post_format = false;
 
 			<?php //echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
 
-			<?php
-			if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
-				echo $this->item->pagination;
-			endif;
-			?>
 			<?php if (isset ($this->item->toc)) :
 				echo $this->item->toc;
 			endif; ?>
@@ -150,25 +134,13 @@ if($this->print) $has_post_format = false;
 				<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
 				<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
 			<?php endif; ?>
-
-			<div class="article-footer-top">
-				<?php echo JLayoutHelper::render('joomla.content.rating', array('item' => $this->item, 'params' => $params)) ?>
-				<?php echo JLayoutHelper::render('joomla.content.social_share.share', $this->item); //Helix Social Share ?>
-			</div>
-		</div> <!-- //.col-sm-10 -->
 	</div> <!-- //.row -->
 
-	<?php
-		if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
-			echo $this->item->pagination;
-		?>
-			<?php endif; ?>
 			<?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
 			<?php echo $this->loadTemplate('links'); ?>
 			<?php endif; ?>
 			<?php // Optional teaser intro text for guests ?>
 			<?php elseif ($params->get('show_noauth') == true && $user->get('guest')) : ?>
-			<?php echo $this->item->introtext; ?>
 			<?php //Optional link to let them register to see the whole article. ?>
 			<?php if ($params->get('show_readmore') && $this->item->fulltext != null) :
 				$link1 = JRoute::_('index.php?option=com_users&view=login');
@@ -195,11 +167,24 @@ if($this->print) $has_post_format = false;
 			<?php endif; ?>
 			<?php endif; ?>
 
+	</div>
+	<div class="col-sm-12 col-md-4">
+		<div class="entry-header-wrap text-center right-pannel">
+			<?php echo JLayoutHelper::render('joomla.content.full_image', $this->item);?>
+
+			<?php echo $this->item->introtext; ?>
+			<?php echo $this->item->event->afterDisplayTitle;?>
+
+			<div class="article-footer-top">
+				<?php echo JLayoutHelper::render('joomla.content.rating', array('item' => $this->item, 'params' => $params)) ?>
+				<?php echo JLayoutHelper::render('joomla.content.social_share.share', $this->item); //Helix Social Share ?>
+			</div>
+		</div>
+	</div>
+
 	<?php
-if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
-	echo $this->item->pagination;
-?>
-	<?php endif; ?>
+		echo $this->item->pagination;
+	?>
 
 	<?php echo $this->item->event->afterDisplayContent; ?>
 
