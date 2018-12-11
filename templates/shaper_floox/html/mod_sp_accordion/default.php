@@ -17,7 +17,7 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="sppb-panel sppb-panel-default">
 			<div class="sppb-panel-heading <?php if($key == 0 && $hidefirst != 1) echo 'active';?>">
 				<span class="sppb-toggle-direction"><i class="floox-icon floox-plus"></i></span>
-				<span class="sppb-panel-title"><?php echo str_replace('\n', '<br/>', $item->title); ?></span>
+				<span class="sppb-panel-title"><?php echo str_replace(';', '<br/>', $item->title); ?></span>
 			</div>
 			<div class="sppb-panel-collapse" <?php if($key != 0 || $hidefirst == 1) echo ' style="display: none;"';?>>
 				<div class="sppb-panel-body">

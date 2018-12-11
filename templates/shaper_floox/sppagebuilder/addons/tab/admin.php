@@ -170,8 +170,9 @@ SpAddonsConfig::addonConfig(
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_TITLE_DESC'),
                                 'std' => 'Tab'
                             ),
-                            'icon' => array(
-                                'type' => 'icon',
+                            // AstoSoft - start
+                            'image' => array(
+                                'type' => 'media',
                                 'title' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_ICON'),
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_ICON_DESC'),
                                 'std' => ''
@@ -182,8 +183,15 @@ SpAddonsConfig::addonConfig(
                                 'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_TAB_ITEM_TEXT_DESC'),
                                 'std' => 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
                             ),
+                            'class' => array(
+                                'type' => 'text',
+                                'title' => JText::_('COM_SPPAGEBUILDER_ADDON_CLASS'),
+                                'desc' => JText::_('COM_SPPAGEBUILDER_ADDON_CLASS_DESC'),
+                                'std' => ''
+                            ),
                         ),
                     ),
+                    // AstoSoft - end
                     'tab_separator'=>array(
                         'type'=>'separator',
                         'title'=>JText::_('COM_SPPAGEBUILDER_ADDON_TAB_SEPERATOR'),
@@ -310,16 +318,33 @@ SpAddonsConfig::addonConfig(
                         ),
                         'std' => 'left',
                     ),
+                    // AstoSoft - start
                     'active_on' => array(
                         'type' => 'checkbox',
                         'title' => 'Active ON',
-                        'desc' => 'If the first item should be set as an active',
+                        'desc' => 'If the one of the items should be set as an active',
                         'values' => array(
                             0 => 'No',
                             1 => 'Yes'
                         ),
                         'std' => 0,
                     ),
+                    'active_number' => array(
+                        'type' => 'select',
+                        'title' => 'Active number',
+                        'desc' => 'Which element should be active',
+                        'values' => array(
+                            '1' => '1',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                        ),
+                        'std' => '1',
+                        'depends' => array(array('active_on', '!=', '0')),
+                    ),
+                    // AstoSoft - end
                     'show_boxshadow' => array(
                         'type' => 'checkbox',
                         'title' => JText::_('COM_SPPAGEBUILDER_TAB_BOXSHADOW_SHOW'),
